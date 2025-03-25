@@ -23,8 +23,8 @@ COPY . .
 RUN pip install --no-cache-dir --upgrade pip \
     && pip install --no-cache-dir -r requirements.txt
 
-# Expose Streamlit's default port
-EXPOSE 8501
+# Expose Streamlit's port for Railway (or platforms that use port 8000)
+EXPOSE 8000
 
-# Command to run the Streamlit app
-CMD ["streamlit", "run", "app.py", "--server.port=8501", "--server.address=0.0.0.0"]
+# Run the Streamlit app using main.py
+CMD ["streamlit", "run", "main.py", "--server.port=8000", "--server.address=0.0.0.0"]
